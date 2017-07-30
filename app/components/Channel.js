@@ -21,7 +21,9 @@ export default class Channel extends Component {
   constructor(props) {
     super(props);
 
-    this.channelId = this.props.location.query.id;
+    const query = new URLSearchParams(this.props.location.search);
+
+    this.channelId = query.get('id');
     this.soma = new SomaFMService();
 
     this.state = {
@@ -41,13 +43,13 @@ export default class Channel extends Component {
     });
 
     const stationUrl = this.soma.getStationUrl(this.channelId);
-    this.props.setTrackUrl(stationUrl, !this.props.isPlaying);
+    this.props.setTrackUrl(stationUrl, true);
 
     this.soma.channelExists(this.channelId, (state) => {
       this.setState({ channelSaved: state });
     });
 
-    this.loadFavorites();
+    this.loadFavorites();;
   }
 
   loadFavorites() {
@@ -55,6 +57,10 @@ export default class Channel extends Component {
     soma.loadSavedChannels((data) => {
       this.props.setFavorites(data);
     });
+  }
+
+  handlePlayPause = () => {
+    this.props.setTrackUrl(this.props.player.track, !this.props.player.playing);
   }
 
   handleSaveChannel = () => {
@@ -117,14 +123,18 @@ export default class Channel extends Component {
 
           <div className={styles.cover}>
             <h2>{channelData && channelData.title || 'Loading channel...'}</h2>
-            <h4>{channelData && channelData.description || 'Loading channel...'}</h4>
-            <h5>{channelData && channelData.dj || 'Loading channel...'}</h5>
+            <h4>{channelData && channelData.description}</h4>
+            <h5>DJ: {channelData && channelData.dj}</h5>
             <img src={channelData && channelData.largeimage} alt={channelData && channelData.title} />
 
             <div className={styles.buttons}>
+              <button className={styles.button} onClick={this.handlePlayPause}>
+                <i className={ !this.props.player.playing ? 'fa fa-play' : 'fa fa-pause' } />&nbsp;
+                { !this.props.player.playing ? 'Play' : 'Pause' }
+              </button>
               <button className={styles.button} onClick={this.handleSaveChannel}>
-                <i className="fa fa-save" />
-                { this.state.channelSaved ? 'Remove Favorite' : 'Save to Favorites' }
+                <i className={ this.state.channelSaved ? "fa fa-star" : "fa fa-star-o" } />&nbsp;
+                { !this.state.channelSaved ? 'Favorite' : 'Remove' }
               </button>
             </div>
           </div>

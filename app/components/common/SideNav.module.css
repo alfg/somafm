@@ -10,6 +10,8 @@
     width: 20%;
     background: #0E0E0E;
     height: 100%;
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
 }
 
 .logo {
@@ -30,7 +32,7 @@
     color: #ff0000;
     font-family: monospace;
     text-align: center;
-    -webkit-app-region: drag;
+    outline: none;
 }
 
 .logo i {
@@ -52,10 +54,12 @@ ul {
 
 .navLinks li {
     border-left: 2px solid transparent;
+    -webkit-app-region: no-drag;
 }
 
 .navLinks .active li {
     border-left: 2px solid #D8A24D;
+    -webkit-app-region: no-drag;
 }
 
 .navLinks .title {

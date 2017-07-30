@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Nav from './common/Nav';
 import SideNav from './common/SideNav';
 import styles from './Settings.module.css';

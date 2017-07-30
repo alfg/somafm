@@ -99,7 +99,6 @@ export default class AudioPlayer extends Component {
   };
 
   playPause = () => {
-    console.log(this.audioEl);
     const playing = !this.state.playing;
     this.setState({ playing });
     this.props.setTrackUrl(this.props.player.track, playing);

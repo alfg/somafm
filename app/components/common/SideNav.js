@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { ipcRenderer } from 'electron';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import styles from './SideNav.module.css';
 import SomaFMService from '../../services/SomaFMService';
 
@@ -35,7 +35,7 @@ export default class SideNav extends Component {
     const { favorites } = this.props;
 
     const favoriteNodes = favorites && favorites.map((v, i) => {
-      return (<li key={i}><i className="fa fa-star" /><Link to={{ pathname: '/channel', query: { id: v.id } }}>{v.title}</Link></li>);
+      return (<li key={i}><i className="fa fa-star" /><Link to={{ pathname: '/channel', search: `?id=${v.id}` }}>{v.title}</Link></li>);
     });
 
     return (
@@ -44,7 +44,7 @@ export default class SideNav extends Component {
 
         <ul className={styles.navLinks}>
           <li className={styles.title}>Main</li>
-          <Link to="/channels" activeClassName={styles.active}><li><i className="fa fa-hashtag" /> Channels</li></Link>
+          <Link to="/channels" className={styles.active}><li><i className="fa fa-hashtag" /> Channels</li></Link>
           {/* <Link to="/settings" activeClassName={styles.active}><li><i className="fa fa-cog" /> Settings</li></Link> */}
         </ul>
 
