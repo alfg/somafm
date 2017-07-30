@@ -114,6 +114,7 @@ export default class Channel extends Component {
             download={downloadSpeed}
             upload={uploadSpeed}
           /> */}
+          <Nav />
 
           <div className={styles.cover}>
             <h2>{channelData && channelData.title || 'Loading channel...'}</h2>

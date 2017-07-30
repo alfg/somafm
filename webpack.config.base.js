@@ -17,6 +17,13 @@ export default validate({
     }, {
       test: /\.json$/,
       loader: 'json-loader'
+    },
+    {
+      test: /\.(?:png|jpg|svg|gif)$/,
+      loader: 'url-loader',
+      query: {
+        limit: 10000
+      }
     }]
   },
 

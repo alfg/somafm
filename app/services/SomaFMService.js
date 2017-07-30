@@ -41,7 +41,7 @@ export default class SomaFMService {
     return url;
   }
 
-  loadChannels(cb) {
+  loadSavedChannels(cb) {
     storage.getItem('channels', (channels) => {
       cb(channels);
     });

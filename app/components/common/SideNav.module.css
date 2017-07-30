@@ -1,3 +1,5 @@
+/* @import "../../img/logo.gif"; */
+
 .sideNav {
     box-shadow: inset -15px 0 9px -11px rgba(0, 0, 0, 0.25);
     border-top: 0;
@@ -8,14 +10,14 @@
     width: 20%;
     background: #0E0E0E;
     height: 100%;
-    -webkit-app-region: drag;
 }
 
 .logo {
     display: block;
     margin: 0 auto;
-    width: 260px;
-    height: 50px;
+    width: 200px;
+    height: 60px;
+    background-image: url('../../img/logo.gif');
     background-position: left center;
     background-size: contain;
     background-position: center center;
@@ -28,6 +30,7 @@
     color: #ff0000;
     font-family: monospace;
     text-align: center;
+    -webkit-app-region: drag;
 }
 
 .logo i {
@@ -57,6 +60,11 @@ ul {
 
 .navLinks .title {
     font-size: 1.2em;
+}
+
+.navLinks .grayed {
+  color: gray;
+  font-style: italic;
 }
 
 .navLinks li {

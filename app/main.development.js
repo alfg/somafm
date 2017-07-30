@@ -45,8 +45,9 @@ app.on('ready', async () => {
     show: false,
     width: 1680,
     height: 720,
-    minWidth: 1680,
-    minHeight: 728,
+    minWidth: 800,
+    minHeight: 600,
+    frame: false,
     titleBarStyle: 'hidden',
     webPreferences: {
       allowDisplayingInsecureContent: true,
