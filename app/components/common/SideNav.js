@@ -23,7 +23,6 @@ export default class SideNav extends Component {
     window.addEventListener('online', this.updateOnlineStatus);
     window.addEventListener('offline', this.updateOnlineStatus);
     this.updateOnlineStatus();
-    this.loadFavorites();
   }
 
   updateOnlineStatus() {
@@ -32,20 +31,11 @@ export default class SideNav extends Component {
     this.setState({ status });
   }
 
-  loadFavorites() {
-    const soma = new SomaFMService();
-    soma.loadSavedChannels((data) => {
-      console.log(data);
-      this.setState({ favorites: data });
-    });
-  }
-
   render() {
-    const { favorites } = this.state;
-    console.log(favorites);
+    const { favorites } = this.props;
 
-    const favoriteNodes = favorites.map((v, i) => {
-      return (<li><i className="fa fa-star" /><Link to={{ pathname: '/channel', query: { id: v.id } }}>{v.title}</Link></li>);
+    const favoriteNodes = favorites && favorites.map((v, i) => {
+      return (<li key={i}><i className="fa fa-star" /><Link to={{ pathname: '/channel', query: { id: v.id } }}>{v.title}</Link></li>);
     });
 
     return (
@@ -60,7 +50,7 @@ export default class SideNav extends Component {
 
         <ul className={styles.navLinks}>
           <li className={styles.title}>Favorites</li>
-          { favoriteNodes.length !== 0 ? favoriteNodes : <li><span className={styles.grayed}>None</span></li> }
+          { favorites ? favoriteNodes : <li><span className={styles.grayed}>None</span></li> }
         </ul>
 
         <ul className={styles.status}>

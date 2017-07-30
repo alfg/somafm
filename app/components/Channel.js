@@ -14,7 +14,6 @@ export default class Channel extends Component {
       })
     }),
     player: PropTypes.shape({}),
-    setPlaylist: PropTypes.func,
     setMetadata: PropTypes.func,
     setTrackUrl: PropTypes.func
   };
@@ -45,26 +44,24 @@ export default class Channel extends Component {
     this.props.setTrackUrl(stationUrl, !this.props.isPlaying);
 
     this.soma.channelExists(this.channelId, (state) => {
-      console.log(state);
       this.setState({ channelSaved: state });
     });
 
-    // this.timer = setInterval(() => {
-    //   this.setState({ swarm: this.tc.getSwarm() });
-    // }, this.swarmInterval);
+    this.loadFavorites();
   }
 
-  componentWillUnmount() {
-    // clearInterval(this.timer);
-    // this.timer = false;
+  loadFavorites() {
+    const soma = new SomaFMService();
+    soma.loadSavedChannels((data) => {
+      this.props.setFavorites(data);
+    });
   }
 
   handleSaveChannel = () => {
-    console.log('handleSaveChannel');
     if (this.state.channelSaved) {
       this.soma.removeChannel(this.channelId, (val) => {
-        console.log('Removed channel.');
         this.setState({ channelSaved: false });
+        this.loadFavorites();
       });
     } else {
       const channel = {
@@ -73,8 +70,8 @@ export default class Channel extends Component {
       };
 
       this.soma.saveChannel(channel, (val) => {
-        console.log('Saved channel.', val);
         this.setState({ channelSaved: true });
+        this.loadFavorites();
       });
     }
   }
@@ -107,7 +104,9 @@ export default class Channel extends Component {
 
     return (
       <div className={styles.channel}>
-        <SideNav />
+        <SideNav
+          favorites={this.props.channels.favorites}
+         />
         <div className={styles.container}>
           {/* <Nav
             swarm={swarm}

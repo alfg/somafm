@@ -8,10 +8,6 @@ import SomaFMService from '../services/SomaFMService';
 export default class Home extends Component {
 
   static propTypes = {
-    // setHomePlaylist: PropTypes.func,
-    // playlists: PropTypes.shape({
-    //   home: PropTypes.arrayOf(PropTypes.shape({}))
-    // }),
     setHomeChannels: PropTypes.func,
     channels: PropTypes.shape({
       home: PropTypes.arrayOf(PropTypes.shape({}))
@@ -19,9 +15,21 @@ export default class Home extends Component {
   };
 
   componentDidMount() {
+    this.getAllChannels();
+    this.loadFavorites();
+  }
+
+  getAllChannels() {
     const soma = new SomaFMService();
     soma.getAllChannels((err, data) => {
       this.props.setHomeChannels(data);
+    });
+  }
+
+  loadFavorites() {
+    const soma = new SomaFMService();
+    soma.loadSavedChannels((data) => {
+      this.props.setFavorites(data);
     });
   }
 
@@ -38,7 +46,9 @@ export default class Home extends Component {
 
     return (
       <div className={styles.home}>
-        <SideNav />
+        <SideNav
+          favorites={this.props.channels.favorites}
+         />
         <div className={styles.container}>
           <Nav />
           <h2>Channels</h2>

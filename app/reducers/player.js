@@ -6,7 +6,7 @@ const initialState = {
   metadata: null
 };
 
-export default function track(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case TRACK_URL:
       return Object.assign({}, state, {
