@@ -21,7 +21,9 @@ export default class Channel extends Component {
   constructor(props) {
     super(props);
 
-    this.channelId = this.props.location.query.id;
+    const query = new URLSearchParams(this.props.location.search);
+
+    this.channelId = query.get('id');
     this.soma = new SomaFMService();
 
     this.state = {

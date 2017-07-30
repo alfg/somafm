@@ -1,5 +1,13 @@
 import { TRACK_URL, PLAYLIST, METADATA } from '../actions/player';
 
+// export type playerStateType = {
+//   +counter: number
+// };
+
+// type actionType = {
+//   +type: string
+// };
+
 const initialState = {
   track: null,
   playing: false,

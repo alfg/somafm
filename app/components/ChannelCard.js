@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import styles from './ChannelCard.module.css';
 
 
@@ -16,7 +16,7 @@ export default class ChannelCard extends Component {
 
     return (
       <div className={styles.channelCard}>
-        <Link to={{ pathname: '/channel', query: { id: url } }}>
+        <Link to={{ pathname: '/channel', search: `?id=${url}` }}>
           <img className={styles.channelThumbnail__img} src={img} alt={title} />
         </Link>
         <div className={styles.channelCardContent}>

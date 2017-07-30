@@ -1,10 +1,13 @@
 {
   "presets": [
-    ["env", { "targets": { "node": 6 }, "useBuiltIns": true }],
+    ["env", {
+      "targets": { "node": 7 },
+      "useBuiltIns": true
+    }],
     "stage-0",
     "react"
   ],
-  "plugins": ["add-module-exports"],
+  "plugins": ["add-module-exports", "dynamic-import-webpack"],
   "env": {
     "production": {
       "presets": ["react-optimize"],
@@ -14,13 +17,10 @@
       "plugins": [
         "transform-class-properties",
         "transform-es2015-classes",
-        "tcomb"
-      ],
-      "presets": ["react-hmre"]
-    },
-    "test": {
-      "plugins": [
-        ["webpack-loaders", { "config": "webpack.config.test.js", "verbose": false }]
+        ["flow-runtime", {
+          "assert": true,
+          "annotate": true
+        }]
       ]
     }
   }

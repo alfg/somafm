@@ -2,12 +2,15 @@
   "name": "somafm",
   "productName": "somafm",
   "version": "0.1.0",
-  "description": "A Streaming P2P Music Player",
-  "main": "./main.js",
+  "description": "A SomaFM Desktop Player",
+  "main": "./main.prod.js",
   "author": {
     "name": "Alfred Gutierrez",
     "email": "alf.g.jr@gmail.com",
-    "url": "https://github.com/alfg/somafm"
+    "url": "https://github.com/alfg"
+  },
+  "scripts": {
+    "postinstall": "npm rebuild --runtime=electron --target=1.6.6 --disturl=https://atom.io/download/atom-shell --build-from-source"
   },
   "license": "MIT",
   "dependencies": {
