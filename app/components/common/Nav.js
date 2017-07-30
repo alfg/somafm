@@ -51,9 +51,9 @@ export default class Nav extends Component {
     return (
       <div className={styles.nav} onScroll={this.handleScroll} style={transform}>
         <ul className={styles.stats}>
-          <li><span><i className="fa fa-globe" /> { swarm !== null ? swarm.wires.length : 0 } Peers</span></li>
+          {/* <li><span><i className="fa fa-globe" /> { swarm !== null ? swarm.wires.length : 0 } Peers</span></li>
           <li><span ><i className="fa fa-arrow-down" /> { download ? formatBytes(download) : '0 kbps' }</span></li>
-          <li><span><i className="fa fa-arrow-up" /> { upload ? formatBytes(upload) : '0 kbps' }</span></li>
+          <li><span><i className="fa fa-arrow-up" /> { upload ? formatBytes(upload) : '0 kbps' }</span></li> */}
         </ul>
       </div>
     );

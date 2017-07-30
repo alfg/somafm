@@ -11,6 +11,7 @@
     top: 0;
     width: 80%;
     z-index: 1;
+    -webkit-user-select: none;
     -webkit-app-region: drag;
 }
 

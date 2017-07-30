@@ -27,6 +27,8 @@
 
 .buttons {
     display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .button {
@@ -39,6 +41,7 @@
     font-size: 12px;
     font-weight: bold;
     padding: 10px 20px;
-    margin: 10px;
+    margin-right: 10px;
     text-transform: uppercase;
+    width: 120px;
 }
