@@ -1,0 +1,21 @@
+.container {
+  float: right;
+  position: relative;
+  width: 75%;
+}
+
+.container h2 {
+  font-size: 3rem;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.container a {
+  font-size: 1.1rem;
+}
+
+.settings {
+  top: 120px;
+  margin-left: 20px;
+  position: relative;
+}

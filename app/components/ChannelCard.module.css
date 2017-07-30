@@ -1,0 +1,35 @@
+.channelCard {
+    float: left;
+    width: 240px;
+    height: 300px;
+    margin-bottom: 40px;
+}
+.channelThumbnail__img {
+    width: 220px;
+    height: 200px;
+    box-shadow: 0 0 8px 0 #232c39;
+}
+
+.channelCardContent {
+    font-family: "alternate-gothic-no-1-d", "Futura Condensed", "Arial Narrow", Arial, sans-serif;
+    font-weight: normal;
+    font-size: 1.4em;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+
+.channelCardContent__subtitle,
+.channelCardContent__title {
+    margin: 0;
+    color: #fff;
+    overflow: hidden;
+    max-height: 5em;
+}
+
+.channelCardContent__subtitle {
+    font-size: 0.6em;
+}
+
+.channelCardContent__subtitle {
+    color: #cdcccb;
+}

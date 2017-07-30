@@ -1,0 +1,61 @@
+{
+  "playlists": [
+      {
+	
+        "id": 1,
+        "thumbnail": "http://placehold.it/400x300",
+        "title": "Drake/Future",
+        "subtitle": "The Testing Playlist",
+        "url": "magnet:?xt=urn:btih:C0284A806B601E4BA73A476A66894E461E476604&dn=drake+future+double+dealin+2016+bootleg+cdrip+mp3+320+kbps+tx&tr=udp%3A%2F%2Ftracker.publicbt.com%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      },
+      {
+        "id": 2,
+        "thumbnail": "http://placehold.it/400x300",
+        "title": "VA Top 150 Dance",
+        "subtitle": "The Testing Playlist",
+        "url": "magnet:?xt=urn:btih:1DD7D44BD193286D837DF6A9F9C1B4A8F8EFCA4A&dn=va+top+150+dance+2016+mp3+256+320+kbps&tr=udp%3A%2F%2Ftracker.publicbt.com%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      },
+      {
+        "id": 3,
+        "thumbnail": "http://placehold.it/400x300",
+        "title": "Best Driving EDM",
+        "subtitle": "The Testing Playlist",
+        "url": "magnet:?xt=urn:btih:C51B26ADB3234A9B69F5683F32875D1B232C5238&dn=va+best+driving+edm+2016+mp3+320+kbps+wax&tr=udp%3A%2F%2Ftracker.publicbt.com%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      },
+      {
+        "id": 4,
+        "thumbnail": "http://placehold.it/400x300",
+        "title": "NWA - Straight Outta Compton",
+        "subtitle": "The Testing Playlist",
+        "url": "magnet:?xt=urn:btih:46AC067C53DA4F9EEB6FFCABB8D28F5E2F3BDBCA&dn=nwa+straight+outta+compton+1988&tr=udp%3A%2F%2Ftracker.publicbt.com%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      },
+      {
+        "id": 5,
+        "thumbnail": "http://placehold.it/400x300",
+        "title": "Deadmau5",
+        "subtitle": " While 1 < 2",
+        "url": "magnet:?xt=urn:btih:82610FCDDCC27E8C2DCDA814D2FD09A6B20C44D8&dn=deadmau5+while+1+2+2014+320kbps+continuous+mix+itunes+m4a+edm+rg&tr=udp%3A%2F%2Ftracker.publicbt.com%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      },
+      {
+        "id": 6,
+        "thumbnail": "http://placehold.it/400x300",
+        "title": "Deadmau5",
+        "subtitle": "W://2015ALBUM/",
+        "url": "magnet:?xt=urn:btih:ebb344b3a6fb53ab93ebc3e03936f62dc016061d"
+      },
+      {
+        "id": 7,
+        "thumbnail": "http://placehold.it/400x300",
+        "title": "Drake",
+        "subtitle": "The Testing Playlist",
+        "url": "magnet:?xt=urn:btih:9384188C52365F9E22285DAD560C4C3291845FA3&dn=drake+views+from+the+6+the+prequel+2016+mp3+320kbps+hunter+frg&tr=udp%3A%2F%2Ftracker.publicbt.com%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      },
+      {
+        "id": 8,
+        "thumbnail": "http://placehold.it/400x300",
+        "title": "TGIF",
+        "subtitle": "The Testing Playlist",
+        "url": "magnet:?xt=urn:btih:3d3e41bf7609c112f372bae7dd1cf1cbc2e549c9&dn=RADICAL%20-%20TGIF%20MP3&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969"
+      }
+    ]
+}

@@ -1,0 +1,152 @@
+.container {
+    background: rgba(0, 0, 0, .9);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+}
+
+.player {
+  display: none;
+}
+
+.context {
+    float: left;
+    width: 20%;
+    height: 100%;
+    position: relative;
+    top: 30px;
+    font-size: 1.6em;
+    font-family: monospace;
+    text-align: center;
+}
+
+.controlsContainer {
+    width: 65%;
+    height: 100%;
+    float: left;
+}
+
+.controls {
+    float: left;
+    width: 20%;
+    height: 100%;
+    left: 40%;
+    position: relative;
+}
+
+.play,
+.back,
+.forward {
+    float: left;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    outline: 0;
+    justify-content: center;
+    background: transparent;
+    color: #888888;
+    border: 0;
+}
+
+.play:hover,
+.back:hover,
+.forward:hover {
+  color: #FFFFFF;
+}
+
+.back i,
+.forward i {
+    font-size: 30px;
+}
+
+.play {
+    width: 40%;
+}
+
+.play i {
+    font-size: 44px;
+}
+
+.scrub {
+    box-sizing: border-box;
+    float: left;
+    height: 100%;
+    padding: 15px;
+    width: 75%;
+}
+
+.scrub table {
+    width: 100%;
+    height: 100%;
+}
+
+.duration {
+  width: 5%;
+  padding: 0 5px;
+}
+
+[type=range] {
+    -webkit-appearance: none;
+    margin: 5px;
+    width: 100%}
+[type=range]:focus {
+    outline: none;
+}
+[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 0 #222, 0 0 0 #2f2f2f;
+    background: #ccc;
+    border: 0 solid #000;
+    border-radius: 5px;
+}
+[type=range]::-webkit-slider-thumb {
+    box-shadow: 0 0 0 #111, 0 0 0 #1e1e1e;
+    border: 0 solid #fff;
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+    background: #666;
+    cursor: pointer;
+    z-index: 100;
+    -webkit-appearance: none;
+    margin-top: -2.5px;
+}
+[type=range]:focus::-webkit-slider-runnable-track {
+    background: #d9d9d9;
+}
+
+.volume {
+    box-sizing: border-box;
+    float: right;
+    height: 100%;
+    padding: 15px;
+    width: 15%;
+}
+
+.volume table {
+    height: 100%;
+    width: 100%;
+}
+
+.mute {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    outline: 0;
+    justify-content: center;
+    background: transparent;
+    color: #888888;
+    border: 0;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.mute:hover {
+  color: #FFFFFF;
+}

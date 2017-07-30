@@ -1,0 +1,15 @@
+{
+  "name": "somafm",
+  "productName": "somafm",
+  "version": "0.1.0",
+  "description": "A Streaming P2P Music Player",
+  "main": "./main.js",
+  "author": {
+    "name": "Alfred Gutierrez",
+    "email": "alf.g.jr@gmail.com",
+    "url": "https://github.com/alfg/somafm"
+  },
+  "license": "MIT",
+  "dependencies": {
+  }
+}

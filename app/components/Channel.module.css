@@ -1,0 +1,44 @@
+.container {
+  float: right;
+  position: relative;
+  text-align: center;
+  width: 80%;
+  margin-bottom: 80px;
+}
+
+.container h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.container a {
+  font-size: 1.1rem;
+}
+
+.channel {
+  top: 80px;
+  position: relative;
+}
+
+.cover {
+    margin-left: 20px;
+    text-align: left;
+}
+
+.buttons {
+    display: block;
+}
+
+.button {
+    background: #D8A24D;
+    border: 0;
+    border-radius: 1rem;
+    color: #141619;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 10px;
+    text-transform: uppercase;
+}

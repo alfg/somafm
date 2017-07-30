@@ -1,0 +1,88 @@
+.sideNav {
+    box-shadow: inset -15px 0 9px -11px rgba(0, 0, 0, 0.25);
+    border-top: 0;
+    border-right: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 20%;
+    background: #0E0E0E;
+    height: 100%;
+    -webkit-app-region: drag;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    width: 260px;
+    height: 50px;
+    background-position: left center;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    z-index: 1;
+    position: relative;
+    top: 40px;
+    font-size: 3em;
+    color: #ff0000;
+    font-family: monospace;
+    text-align: center;
+}
+
+.logo i {
+    font-size: 0.7em;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.navLinks {
+    padding: 10px 0;
+    position: relative;
+    top: 100px;
+}
+
+.navLinks li {
+    border-left: 2px solid transparent;
+}
+
+.navLinks .active li {
+    border-left: 2px solid #D8A24D;
+}
+
+.navLinks .title {
+    font-size: 1.2em;
+}
+
+.navLinks li {
+    padding: 10px 20px;
+}
+
+.navLinks i {
+    width: 20px;
+}
+
+.status {
+    padding: 10px;
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+}
+
+.status li {
+    float: left;
+    margin: 0 10px;
+}
+
+:global .online {
+    color: #4DC12B;
+}
+
+:global .offline {
+    color: #FF0000;
+}
