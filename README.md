@@ -1,13 +1,13 @@
-# somafm
+# ![somafm](http://somafm.com/linktous/150x50sfm2_1.gif)
 A Desktop SomaFM Player.
 
 http://somafm.com/
 
 Built using [Electron](http://electron.atom.io) and [Node.js](https://nodejs.org/).
 
-**somafm is currently in Alpha!**
-
 ![somafm](screenshot-1.png)
+
+\*somafm player is currently in Alpha!
 
 ## Features
 * Cross Platform supporting OSX, Windows and Linux!
@@ -23,10 +23,16 @@ Built using [Electron](http://electron.atom.io) and [Node.js](https://nodejs.org
 * Tests
 
 ## Download
-TBA
+See [Releases](https://github.com/alfg/somafm/releases) for binary downloads and source.
 
 ## Contributing
 TBA
+
+## Support SomaFM
+SomaFM is entirely listener-supported and independent radio. You can support SomaFM by 
+donating or purchasing merchandise at the following page:
+
+http://somafm.com/support/
 
 ## Development
 See: [Development](DEVELOPMENT.md)
