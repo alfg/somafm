@@ -7,7 +7,7 @@ Built using [Electron](http://electron.atom.io) and [Node.js](https://nodejs.org
 
 **somafm is currently in Alpha!**
 
-![somafm](screenshot.png)
+![somafm](screenshot-1.png)
 
 ## Features
 * Cross Platform supporting OSX, Windows and Linux!
