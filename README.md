@@ -7,7 +7,7 @@ Built using [Electron](http://electron.atom.io) and [Node.js](https://nodejs.org
 
 ![somafm](screenshot-1.png)
 
-\*somafm player is currently in Alpha!
+\*SomaFM player is currently in Alpha!
 
 ## Features
 * Cross Platform supporting OSX, Windows and Linux!
