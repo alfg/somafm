@@ -22,7 +22,15 @@ Built using [Electron](http://electron.atom.io) and [Node.js](https://nodejs.org
 * Code Optimization
 * Tests
 
-## Download
+## Install 
+
+#### Homebrew
+```
+brew tap alfg/tap
+brew cask install alfg/tap/Casks/somafm
+```
+
+#### Download
 See [Releases](https://github.com/alfg/somafm/releases) for binary downloads and source.
 
 ## Contributing
