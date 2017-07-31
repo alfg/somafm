@@ -25,6 +25,11 @@
     text-align: left;
 }
 
+.cover img {
+  float: right;
+  margin-right: 20px;
+}
+
 .buttons {
     display: block;
     margin-top: 10px;
@@ -44,4 +49,49 @@
     margin-right: 10px;
     text-transform: uppercase;
     width: 120px;
+}
+
+.recent {
+  margin-top: 100px;
+  margin-left: 20px;
+  text-align: left;
+}
+
+.tracks {
+    float: left;
+    width: 100%;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    box-sizing: border-box;
+}
+
+.tracks div {
+    margin: 0;
+    margin-top: 5px;
+    color: #D8A24D;
+    overflow: hidden;
+    max-height: 2em;
+}
+
+.date {
+    float: left;
+    width: 10%;
+}
+
+.artist {
+    float: left;
+    width: 20%;
+}
+
+.title {
+    float: left;
+    width: 40%;
+}
+
+.album {
+    float: right;
+    width: 30%;
 }

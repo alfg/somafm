@@ -8,15 +8,7 @@
     box-sizing: border-box;
 }
 
-.play {
-    width: 50px;
-    float: left;
-    font-size: 25px;
-    cursor: pointer;
-}
-
-.title {
-    float: left;
+.track div {
     margin: 0;
     margin-top: 5px;
     color: #fff;
@@ -24,26 +16,22 @@
     max-height: 2em;
 }
 
-.title.playing {
-  color: #D8A24D;
+.date {
+    float: left;
+    width: 10%;
 }
 
-.trackLength {
+.artist {
+    float: left;
+    width: 20%;
+}
+
+.title {
+    float: left;
+    width: 40%;
+}
+
+.album {
     float: right;
-    margin-top: 5px;
-    padding-right: 20px;
-    width: 25px;
-}
-
-.trackProgress {
-    color: #D8A24D;
-    float: right;
-    margin-top: 5px;
-    padding-right: 20px;
-    text-align: right;
-    width: 50px;
-}
-
-.green {
-    color: #4DC12B;
+    width: 30%;
 }

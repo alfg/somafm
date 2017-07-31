@@ -29,17 +29,19 @@ export default class Channel extends Component {
     this.state = {
       channelData: null,
       metadata: null,
-      tracks: [],
+      songs: [],
       channelSaved: false
     };
-    this.timer = null;
-    this.swarmInterval = 2000;
   }
 
   componentDidMount() {
     this.soma.getChannel(this.channelId, (err, data) => {
       this.setState({ channelData: data });
       this.props.setMetadata({ data: data });
+    });
+
+    this.soma.getSongsList(this.channelId, (err, data) => {
+      this.setState({ songs: data });
     });
 
     const stationUrl = this.soma.getStationUrl(this.channelId);
@@ -53,8 +55,7 @@ export default class Channel extends Component {
   }
 
   loadFavorites() {
-    const soma = new SomaFMService();
-    soma.loadSavedChannels((data) => {
+    this.soma.loadSavedChannels((data) => {
       this.props.setFavorites(data);
     });
   }
@@ -85,28 +86,16 @@ export default class Channel extends Component {
   render() {
     const channelData = this.state.channelData;
     const stationUrl = this.soma.getStationUrl(this.channelId);
-    // const metadata = this.state.metadata;
-    // const { setTrackUrl } = this.props;
-    // const { downloadPlaylist, downloadTrack, getFileProgress } = this.tc;
 
-    // const trackNodes = this.state.tracks.map((v, i) => {
-    //   const isCurrentTrackPlaying = this.props.player.playing && this.props.player.track === i;
-    //   return (
-    //     <Track
-    //       key={i}
-    //       trackId={i}
-    //       track={v}
-    //       setTrackUrl={setTrackUrl}
-    //       isPlaying={isCurrentTrackPlaying}
-    //       getFileProgress={getFileProgress}
-    //       downloadTrack={downloadTrack}
-    //     />
-    //   );
-    // });
-
-    // const swarm = this.state.swarm;
-    // const downloadSpeed = swarm !== null ? parseInt(swarm.downloadSpeed(), 10) : 0;
-    // const uploadSpeed = swarm !== null ? parseInt(swarm.uploadSpeed(), 10) : 0;
+    const songNodes = this.state.songs && this.state.songs.map((v, i) => {
+      return (<Track
+        key={i}
+        title={v.title}
+        artist={v.artist}
+        album={v.album}
+        date={v.date}
+       />);
+    });
 
     return (
       <div className={styles.channel}>
@@ -122,10 +111,11 @@ export default class Channel extends Component {
           <Nav />
 
           <div className={styles.cover}>
+            <img src={channelData && channelData.largeimage} alt={channelData && channelData.title} />
             <h2>{channelData && channelData.title || 'Loading channel...'}</h2>
             <h4>{channelData && channelData.description}</h4>
             <h5>DJ: {channelData && channelData.dj}</h5>
-            <img src={channelData && channelData.largeimage} alt={channelData && channelData.title} />
+            <h4>Now Playing: {channelData && channelData.lastPlaying}</h4>
 
             <div className={styles.buttons}>
               <button className={styles.button} onClick={this.handlePlayPause}>
@@ -138,9 +128,18 @@ export default class Channel extends Component {
               </button>
             </div>
           </div>
-          {/* {trackNodes} */}
+
+          <h3 className={styles.recent}>Recently Played Songs</h3>
+          <div className={styles.tracks}>
+            <div className={styles.date}>Played at</div>
+            <div className={styles.artist}>Artist</div>
+            <div className={styles.title}>Song</div>
+            <div className={styles.album}>Album</div>
+          </div>
+          {songNodes}
         </div>
       </div>
     );
   }
 }
+

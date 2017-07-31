@@ -29,11 +29,24 @@ export default class SomaFMService {
 
     axios.get(url)
     .then((resp) => {
-      const channel = _.find(resp.data.channels, {id})
+      const channel = _.find(resp.data.channels, {id});
       cb(null, channel);
     }).catch((err) => {
       cb(err);;
     });
+  }
+
+  getSongsList(id, cb) {
+    const url = `${this.baseUrl}/songs/${id}.json`;
+
+    axios.get(url)
+    .then((resp) => {
+      const songs = _.orderBy(resp.data.songs, 'date', 'desc');
+      cb(null, songs);
+    }).catch((err) => {
+      cb(err);;
+    });
+
   }
 
   getStationUrl(id) {
