@@ -8,11 +8,6 @@ import SomaFMService from '../services/SomaFMService';
 export default class Channel extends Component {
 
   static propTypes = {
-    location: PropTypes.shape({
-      query: PropTypes.shape({
-        magnetUri: PropTypes.string
-      })
-    }),
     player: PropTypes.shape({}),
     setMetadata: PropTypes.func,
     setTrackUrl: PropTypes.func
@@ -21,9 +16,6 @@ export default class Channel extends Component {
   constructor(props) {
     super(props);
 
-    const query = new URLSearchParams(this.props.location.search);
-
-    this.channelId = query.get('id');
     this.soma = new SomaFMService();
 
     this.state = {
@@ -32,26 +24,60 @@ export default class Channel extends Component {
       songs: [],
       channelSaved: false
     };
+
+    this.timer = null;
+    this.refreshInterval = 15000;
   }
 
   componentDidMount() {
-    this.soma.getChannel(this.channelId, (err, data) => {
+    const channelId = this.props.match.params.id;
+    this.getChannel(channelId);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    this.timer = false;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.location.pathname !== nextProps.location.pathname) {
+      const channelId = nextProps.match.params.id;
+      this.getChannel(channelId);
+    }
+  }
+
+  getChannel(channelId) {
+    const stationUrl = this.soma.getStationUrl(channelId);
+    this.props.setTrackUrl(stationUrl, true);
+
+    this.getChannelData(channelId);
+    this.getSongsList(channelId);
+    this.channelExists(channelId);
+    this.loadFavorites();
+
+
+    this.timer = setInterval(() => {
+      this.getSongsList(channelId);
+    }, this.refreshInterval);
+  }
+
+  getChannelData(channelId) {
+    this.soma.getChannel(channelId, (err, data) => {
       this.setState({ channelData: data });
       this.props.setMetadata({ data: data });
     });
+  }
 
-    this.soma.getSongsList(this.channelId, (err, data) => {
-      this.setState({ songs: data });
-    });
-
-    const stationUrl = this.soma.getStationUrl(this.channelId);
-    this.props.setTrackUrl(stationUrl, true);
-
-    this.soma.channelExists(this.channelId, (state) => {
+  channelExists(channelId) {
+    this.soma.channelExists(channelId, (state) => {
       this.setState({ channelSaved: state });
     });
+  }
 
-    this.loadFavorites();;
+  getSongsList(channelId) {
+    this.soma.getSongsList(channelId, (err, data) => {
+      this.setState({ songs: data });
+    });
   }
 
   loadFavorites() {
@@ -103,11 +129,6 @@ export default class Channel extends Component {
           favorites={this.props.channels.favorites}
          />
         <div className={styles.container}>
-          {/* <Nav
-            swarm={swarm}
-            download={downloadSpeed}
-            upload={uploadSpeed}
-          /> */}
           <Nav />
 
           <div className={styles.cover}>
@@ -130,16 +151,17 @@ export default class Channel extends Component {
           </div>
 
           <h3 className={styles.recent}>Recently Played Songs</h3>
-          <div className={styles.tracks}>
+          <div className={styles.songsHeader}>
             <div className={styles.date}>Played at</div>
             <div className={styles.artist}>Artist</div>
             <div className={styles.title}>Song</div>
             <div className={styles.album}>Album</div>
           </div>
-          {songNodes}
+          <div className={styles.songs}>
+            {songNodes}
+          </div>
         </div>
       </div>
     );
   }
 }
-

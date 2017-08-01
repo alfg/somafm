@@ -16,7 +16,7 @@ export default class ChannelCard extends Component {
 
     return (
       <div className={styles.channelCard}>
-        <Link to={{ pathname: '/channel', search: `?id=${url}` }}>
+        <Link to={{ pathname: `/channel/${url}` }}>
           <img className={styles.channelThumbnail__img} src={img} alt={title} />
         </Link>
         <div className={styles.channelCardContent}>

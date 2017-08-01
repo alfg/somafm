@@ -10,7 +10,7 @@ export default () => (
   <App>
     <Switch>
       <Route path="/channels" component={HomePage} />
-      <Route path="/channel" component={ChannelPage} />
+      <Route path="/channel/:id" component={ChannelPage} />
       <Route path="/settings" component={SettingsPage} />
       <Route path="/" component={HomePage} />
     </Switch>

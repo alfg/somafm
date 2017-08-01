@@ -98,3 +98,7 @@ ul {
 :global .offline {
     color: #FF0000;
 }
+
+:global .active {
+    color: #D8A24D;
+}
