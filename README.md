@@ -30,6 +30,11 @@ brew tap alfg/tap
 brew cask install somafm
 ```
 
+Or upgrade to latest:
+```
+brew cask install somafm --force
+```
+
 #### Download
 See [Releases](https://github.com/alfg/somafm/releases) for binary downloads and source.
 
