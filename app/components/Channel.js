@@ -56,6 +56,8 @@ export default class Channel extends Component {
     this.loadFavorites();
 
 
+    // Reset song list timer.
+    clearInterval(this.timer);
     this.timer = setInterval(() => {
       this.getSongsList(channelId);
     }, this.refreshInterval);
@@ -91,15 +93,16 @@ export default class Channel extends Component {
   }
 
   handleSaveChannel = () => {
+    const { id: channelId, title } = this.state.channelData;
     if (this.state.channelSaved) {
-      this.soma.removeChannel(this.channelId, (val) => {
+      this.soma.removeChannel(channelId, (val) => {
         this.setState({ channelSaved: false });
         this.loadFavorites();
       });
     } else {
       const channel = {
-        id: this.channelId,
-        title: this.state.channelData.title
+        id: channelId,
+        title: title
       };
 
       this.soma.saveChannel(channel, (val) => {
