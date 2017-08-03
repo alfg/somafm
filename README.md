@@ -6,6 +6,8 @@ http://somafm.com/
 Built using [Electron](http://electron.atom.io) and [Node.js](https://nodejs.org/).
 
 ![somafm](screenshot-1.png)
+![somafm](screenshot-2.png)
+
 
 \*SomaFM player is currently in Alpha!
 
