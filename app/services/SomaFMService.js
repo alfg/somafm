@@ -1,4 +1,3 @@
-// import TorrentClient from '../core/TorrentClient';
 import _ from 'lodash';
 import config from '../config.json';
 import storage from '../core/Storage';
