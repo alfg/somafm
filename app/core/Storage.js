@@ -11,7 +11,7 @@ const storage = {
 
   getItem(key, cb) {
     localforage.getItem(key).then((val) =>
-      cb(val)
+      cb(null, val)
     )
     .catch((err) => {
       cb(err);
@@ -20,7 +20,7 @@ const storage = {
 
   setItem(key, value, cb) {
     localforage.setItem(key, value).then((val) =>
-      cb(val)
+      cb(null, val)
     )
     .catch((err) =>
       cb(err)
@@ -35,14 +35,9 @@ const storage = {
       return cb(false);
     })
     .catch((err) => {
-      console.log(err);
       cb(false);
     });
-  },
-
-  // addItem(key, value, cb) {
-
-  // }
+  }
 };
 
 export default storage;

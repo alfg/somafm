@@ -15,7 +15,7 @@ export default class ChannelCard extends Component {
     const { title, subtitle, img, url } = this.props;
 
     return (
-      <div className={styles.channelCard}>
+      <div className={`channelCard ${styles.channelCard}`}>
         <Link to={{ pathname: `/channel/${url}` }}>
           <img className={styles.channelThumbnail__img} src={img} alt={title} />
         </Link>

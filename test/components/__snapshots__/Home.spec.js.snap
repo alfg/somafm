@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home component should match exact snapshot 1`] = `
+<div>
+  <div
+    className="home"
+  >
+    <div
+      className="sideNav"
+    >
+      <a
+        className="logo"
+        href="/"
+        onClick={[Function]}
+      />
+      <ul
+        className="navLinks"
+      >
+        <li
+          className="title"
+        >
+          Main
+        </li>
+        <a
+          className="active"
+          href="/channels"
+          onClick={[Function]}
+        >
+          <li>
+            <i
+              className="fa fa-hashtag"
+            />
+             Channels
+          </li>
+        </a>
+      </ul>
+      <ul
+        className="navLinks"
+      >
+        <li
+          className="title"
+        >
+          Favorites
+        </li>
+      </ul>
+      <ul
+        className="status"
+      >
+        <li>
+          <i
+            className="fa fa-signal"
+          />
+           
+          <span
+            className="offline"
+          >
+            offline
+          </span>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="container"
+    >
+      <div
+        className="nav"
+        onScroll={[Function]}
+        style={undefined}
+      >
+        <ul
+          className="stats"
+        />
+      </div>
+      <div
+        className="channels"
+      >
+        <h2>
+          Channels
+        </h2>
+        <div
+          className="channelCard channelCard"
+        >
+          <a
+            href="/channel/7soul"
+            onClick={[Function]}
+          >
+            <img
+              alt="Seven Inch Soul"
+              className="channelThumbnail__img"
+              src="https://api.somafm.com/logos/256/7soul256.png"
+            />
+          </a>
+          <div
+            className="channelCardContent"
+          >
+            <div
+              className="channelCardContent__title"
+            >
+              Seven Inch Soul
+            </div>
+            <div
+              className="channelCardContent__subtitle"
+            >
+              Vintage soul tracks from the original 45 RPM vinyl.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

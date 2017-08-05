@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { ipcRenderer } from 'electron';
+
 import { Link, NavLink } from 'react-router-dom';
 import styles from './SideNav.module.css';
 import SomaFMService from '../../services/SomaFMService';
@@ -17,6 +18,8 @@ export default class SideNav extends Component {
       status: 'offline',
       favorites: []
     };
+
+    this.ipc = ipcRenderer;
   }
 
   componentDidMount() {
@@ -27,14 +30,16 @@ export default class SideNav extends Component {
 
   updateOnlineStatus() {
     const status = navigator.onLine ? 'online' : 'offline';
-    ipcRenderer.send('online-status-changed', status);
-    this.setState({ status });
+    if (this.ipc) {
+      this.ipc.send('online-status-changed', status);
+      this.setState({ status });
+    }
   }
 
   render() {
     const { favorites } = this.props;
 
-    const favoriteNodes = favorites && favorites.map((v, i) => {
+    const favoriteNodes = (favorites.length > 0) && favorites.map((v, i) => {
       return (
         <li key={i}>
           <i className="fa fa-star" />

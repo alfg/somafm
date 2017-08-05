@@ -10,7 +10,8 @@ export default class Home extends Component {
   static propTypes = {
     setHomeChannels: PropTypes.func,
     channels: PropTypes.shape({
-      home: PropTypes.arrayOf(PropTypes.shape({}))
+      home: PropTypes.arrayOf(PropTypes.shape({})),
+      favorites: PropTypes.arrayOf(PropTypes.shape({}))
     })
   };
 
@@ -34,7 +35,8 @@ export default class Home extends Component {
   }
 
   render() {
-    const channelNodes = this.props.channels.home.map((v, i) =>
+    const channels = this.props.channels.home || [];
+    const channelNodes = channels.map((v, i) =>
       <ChannelCard
         key={i}
         img={v.largeimage || "http://placehold.it/400x300"}
@@ -46,13 +48,13 @@ export default class Home extends Component {
 
     return (
       <div className={styles.home}>
-        <SideNav
-          favorites={this.props.channels.favorites}
-         />
+        <SideNav favorites={this.props.channels.favorites} />
         <div className={styles.container}>
           <Nav />
-          <h2>Channels</h2>
-          {channelNodes.length !== 0 ? channelNodes : 'No channels available.' }
+          <div className="channels">
+            <h2>Channels</h2>
+            {channels.length !== 0 ? channelNodes : 'No channels available.' }
+          </div>
         </div>
       </div>
     );

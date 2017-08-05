@@ -54,17 +54,22 @@ export default class SomaFMService {
   }
 
   loadSavedChannels(cb) {
-    storage.getItem('channels', (channels) => {
-      cb(channels);
+    storage.getItem('channels', (err, channels) => {
+      if (err) return cb([]);
+
+      return cb(channels);
     });
   }
 
   saveChannel(channel, cb) {
-    storage.getItem('channels', (channels) => {
+    storage.getItem('channels', (err, channels) => {
+      if (err) return cb([]);
+
       channels = channels ? channels : [];
       channels.push(channel);
-      storage.setItem('channels', channels, (val) => {
-        cb(val);
+      storage.setItem('channels', channels, (err, val) => {
+        if (err) return cb([]);
+        return cb(val);
       });
     });
   }
