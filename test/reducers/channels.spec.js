@@ -1,5 +1,5 @@
 import channels from '../../app/reducers/channels';
-import { CHANNELS, FAVORITES } from '../../app/actions/channels';
+// import { CHANNELS, FAVORITES } from '../../app/actions/channels';
 
 describe('reducers', () => {
   describe('channels', () => {

@@ -4,12 +4,11 @@ import styles from './Track.module.css';
 
 export default class Track extends Component {
   static propTypes = {
-    track: PropTypes.shape({}),
+    date: PropTypes.string.isRequired,
+    artist: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    album: PropTypes.string.isRequired,
   };
-
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const { date, artist, title, album } = this.props;
@@ -26,10 +25,10 @@ export default class Track extends Component {
 }
 
 function toDatetime(ts) {
-  var date = new Date(ts * 1000);
-  var hours = date.getHours();
-  var minutes = "0" + date.getMinutes();
-  var seconds = "0" + date.getSeconds();
-  var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+  const date = new Date(ts * 1000);
+  const hours = date.getHours();
+  const minutes = `0${date.getMinutes()}`;
+  const seconds = `0${date.getSeconds()}`;
+  const formattedTime = `${hours}:${minutes.substr(-2)}:${seconds.substr(-2)}`;
   return formattedTime;
 }

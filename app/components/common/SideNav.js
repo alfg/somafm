@@ -3,12 +3,11 @@ import { ipcRenderer } from 'electron';
 
 import { Link, NavLink } from 'react-router-dom';
 import styles from './SideNav.module.css';
-import SomaFMService from '../../services/SomaFMService';
 
 export default class SideNav extends Component {
 
   static propTypes = {
-    transform: PropTypes.string
+    favorites: PropTypes.arrayOf(PropTypes.shape({})).isRequired
   };
 
   constructor(props) {
@@ -39,23 +38,23 @@ export default class SideNav extends Component {
   render() {
     const { favorites } = this.props;
 
-    const favoriteNodes = (favorites.length > 0) && favorites.map((v, i) => {
-      return (
-        <li key={i}>
-          <i className="fa fa-star" />
-          <NavLink to={{ pathname: `/channel/${v.id}` }} activeClassName="active">{v.title}</NavLink>
-        </li>
-      );
-    });
+    const favoriteNodes = (favorites.length > 0) && favorites.map((v, i) => (
+      <li key={v.id}>
+        <i className="fa fa-star" />
+        <NavLink to={{ pathname: `/channel/${v.id}` }} activeClassName="active">{v.title}</NavLink>
+      </li>
+      ));
 
     return (
       <div className={styles.sideNav}>
-        <Link to="/" className={styles.logo}></Link>
+        <Link to="/" className={styles.logo} />
 
         <ul className={styles.navLinks}>
           <li className={styles.title}>Main</li>
           <Link to="/channels" className={styles.active}><li><i className="fa fa-hashtag" /> Channels</li></Link>
-          {/* <Link to="/settings" activeClassName={styles.active}><li><i className="fa fa-cog" /> Settings</li></Link> */}
+          {/* <Link to="/settings" activeClassName={styles.active}>
+            <li><i className="fa fa-cog" /> Settings</li>
+          </Link> */}
         </ul>
 
         <ul className={styles.navLinks}>

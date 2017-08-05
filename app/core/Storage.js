@@ -35,7 +35,7 @@ const storage = {
       return cb(false);
     })
     .catch((err) => {
-      cb(false);
+      cb(err, false);
     });
   }
 };

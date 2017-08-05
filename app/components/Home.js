@@ -8,11 +8,12 @@ import SomaFMService from '../services/SomaFMService';
 export default class Home extends Component {
 
   static propTypes = {
-    setHomeChannels: PropTypes.func,
+    setHomeChannels: PropTypes.func.isRequired,
+    setFavorites: PropTypes.func.isRequired,
     channels: PropTypes.shape({
       home: PropTypes.arrayOf(PropTypes.shape({})),
       favorites: PropTypes.arrayOf(PropTypes.shape({}))
-    })
+    }).isRequired
   };
 
   componentDidMount() {
@@ -28,22 +29,21 @@ export default class Home extends Component {
   }
 
   loadFavorites() {
-    const soma = new SomaFMService();
-    soma.loadSavedChannels((data) => {
+    SomaFMService.loadSavedChannels((data) => {
       this.props.setFavorites(data);
     });
   }
 
   render() {
     const channels = this.props.channels.home || [];
-    const channelNodes = channels.map((v, i) =>
-      <ChannelCard
-        key={i}
-        img={v.largeimage || "http://placehold.it/400x300"}
+    const channelNodes = channels.map((v) =>
+      (<ChannelCard
+        key={v.id}
+        img={v.largeimage || 'http://placehold.it/400x300'}
         title={v.title}
         subtitle={v.description}
         url={v.id}
-      />
+      />)
     );
 
     return (

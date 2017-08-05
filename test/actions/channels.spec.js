@@ -1,4 +1,4 @@
-import { spy } from 'sinon';
+// import { spy } from 'sinon';
 import * as actions from '../../app/actions/channels';
 
 describe('actions', () => {
