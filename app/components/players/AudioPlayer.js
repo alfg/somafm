@@ -7,8 +7,18 @@ import styles from './AudioPlayer.module.css';
 export default class AudioPlayer extends Component {
 
   static propTypes = {
-    player: PropTypes.shape({}),
-    setTrackUrl: PropTypes.func
+    player: PropTypes.shape({
+      track: PropTypes.string,
+      playlist: PropTypes.array,
+      playing: PropTypes.bool.isRequired,
+      metadata: PropTypes.shape({})
+    }).isRequired,
+    setTrackUrl: PropTypes.func.isRequired,
+    track: PropTypes.string,
+  };
+
+  static defaultProps = {
+    track: null
   };
 
   constructor(props) {
@@ -24,9 +34,7 @@ export default class AudioPlayer extends Component {
     this.onSeekMouseUp = this.onSeekMouseUp.bind(this);
     this.onSeekChange = this.onSeekChange.bind(this);
 
-    //new
     this.audioEl = null;
-
 
     this.state = {
       playing: false,
@@ -88,7 +96,7 @@ export default class AudioPlayer extends Component {
   };
 
   onSeekMouseUp = (e) => {
-    this.setState({ seeking: false })
+    this.setState({ seeking: false });
     this.playerRef.seekTo(parseFloat(e.target.value));
   };
 
@@ -102,8 +110,6 @@ export default class AudioPlayer extends Component {
     const playing = !this.state.playing;
     this.setState({ playing });
     this.props.setTrackUrl(this.props.player.track, playing);
-
-    // playing ? this.audioEl.pause() : this.audioEl.play();
   };
 
   playNext() {
@@ -144,10 +150,10 @@ export default class AudioPlayer extends Component {
 
   render() {
     const { track, playing, metadata } = this.props.player;
-    const { volume, duration, played } = this.state;
+    const { volume } = this.state;
 
     return (
-      <div className={styles.container} onKeyPress={this.onKeyPress}>
+      <div className={styles.container} onKeyPress={this.onKeyPress} role="presentation">
         <div className={styles.player}>
           <ReactPlayer
             ref={(c) => { this.playerRef = c; }}
@@ -176,22 +182,29 @@ export default class AudioPlayer extends Component {
           <span>{metadata && metadata.data.title}</span>
         </div>
         <div className={styles.controlsContainer}>
-        <div className={styles.controls}>
-          <button className={styles.back} onClick={this.playPrev}><i className="fa fa-step-backward"></i></button>
-          <button className={styles.play} onClick={this.playPause}><i className={this.state.playing ? 'fa fa-pause' : 'fa fa-play'}></i></button>
-          <button className={styles.forward} onClick={this.playNext}><i className="fa fa-step-forward"></i></button>
-        </div>
+          <div className={styles.controls}>
+            {/* <button className={styles.back} onClick={this.playPrev}><i className="fa fa-step-backward"></i></button> */}
+            <button className={styles.play} onClick={this.playPause}>
+              <i className={this.state.playing ? 'fa fa-pause-circle-o' : 'fa fa-play-circle-o'} />
+            </button>
+            {/* <button className={styles.forward} onClick={this.playNext}><i className="fa fa-step-forward"></i></button> */}
+          </div>
         </div>
 
         <div className={styles.volume}>
           <table><tbody>
             <tr>
               <td>
-                  <button className={styles.mute} onClick={this.mute}><i className={this.state.volume === 0 ? "fa fa-volume-off" : "fa fa-volume-up"}></i></button>
+                <button className={styles.mute} onClick={this.mute}>
+                  <i className={this.state.volume === 0 ? 'fa fa-volume-off' : 'fa fa-volume-up'} />
+                </button>
               </td>
               <td>
                 <input
-                  type="range" min={0} max={1} step="any"
+                  type="range"
+                  min={0}
+                  max={1}
+                  step="any"
                   value={this.state.volume}
                   onChange={this.setVolume}
                 />
@@ -202,19 +215,4 @@ export default class AudioPlayer extends Component {
       </div>
     );
   }
-}
-
-function format(seconds) {
-  const date = new Date(seconds * 1000);
-  const hh = date.getHours();
-  const mm = date.getMinutes();
-  const ss = pad(date.getSeconds());
-  if (hh) {
-    return `${pad(mm)}:${ss}`;
-  }
-  return `${mm}:${ss}`;
-}
-
-function pad(string) {
-  return `0${string}`.slice(-2);
 }

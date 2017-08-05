@@ -8,9 +8,32 @@ import SomaFMService from '../services/SomaFMService';
 export default class Channel extends Component {
 
   static propTypes = {
-    player: PropTypes.shape({}),
-    setMetadata: PropTypes.func,
-    setTrackUrl: PropTypes.func
+    channels: PropTypes.shape({
+      favorites: PropTypes.array.isRequired
+    }).isRequired,
+    location: PropTypes.shape({
+      pathname: PropTypes.string.isRequired
+    }).isRequired,
+    match: PropTypes.shape({
+      params: PropTypes.shape({ id: PropTypes.string.isRequired }).isRequired
+    }).isRequired,
+    player: PropTypes.shape({
+      track: PropTypes.string,
+      playlist: PropTypes.array,
+      playing: PropTypes.bool.isRequired,
+      metadata: PropTypes.shape({})
+    }).isRequired,
+    setMetadata: PropTypes.func.isRequired,
+    setTrackUrl: PropTypes.func.isRequired,
+    setFavorites: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    player: {
+      track: null,
+      playlist: [],
+      metadata: null
+    }
   };
 
   constructor(props) {
@@ -34,16 +57,16 @@ export default class Channel extends Component {
     this.getChannel(channelId);
   }
 
-  componentWillUnmount() {
-    clearInterval(this.timer);
-    this.timer = false;
-  }
-
   componentWillReceiveProps(nextProps) {
     if (this.props.location.pathname !== nextProps.location.pathname) {
       const channelId = nextProps.match.params.id;
       this.getChannel(channelId);
     }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    this.timer = false;
   }
 
   getChannel(channelId) {
@@ -66,7 +89,7 @@ export default class Channel extends Component {
   getChannelData(channelId) {
     this.soma.getChannel(channelId, (err, data) => {
       this.setState({ channelData: data });
-      this.props.setMetadata({ data: data });
+      this.props.setMetadata({ data });
     });
   }
 
@@ -95,17 +118,17 @@ export default class Channel extends Component {
   handleSaveChannel = () => {
     const { id: channelId, title } = this.state.channelData;
     if (this.state.channelSaved) {
-      this.soma.removeChannel(channelId, (val) => {
+      this.soma.removeChannel(channelId, () => {
         this.setState({ channelSaved: false });
         this.loadFavorites();
       });
     } else {
       const channel = {
         id: channelId,
-        title: title
+        title
       };
 
-      this.soma.saveChannel(channel, (val) => {
+      this.soma.saveChannel(channel, () => {
         this.setState({ channelSaved: true });
         this.loadFavorites();
       });
@@ -114,40 +137,38 @@ export default class Channel extends Component {
 
   render() {
     const channelData = this.state.channelData;
-    const stationUrl = this.soma.getStationUrl(this.channelId);
+    const currentSong = this.state.songs.length > 0 ? this.state.songs[0].title : null;
 
-    const songNodes = this.state.songs && this.state.songs.map((v, i) => {
-      return (<Track
-        key={i}
+    const songNodes = this.state.songs && this.state.songs.map((v) => (
+      <Track
+        key={v.title}
         title={v.title}
         artist={v.artist}
         album={v.album}
         date={v.date}
-       />);
-    });
+      />
+    ));
 
     return (
       <div className={styles.channel}>
-        <SideNav
-          favorites={this.props.channels.favorites}
-         />
+        <SideNav favorites={this.props.channels.favorites} />
         <div className={styles.container}>
           <Nav />
-
           <div className={styles.cover}>
             <img src={channelData && channelData.largeimage} alt={channelData && channelData.title} />
-            <h2>{channelData && channelData.title || 'Loading channel...'}</h2>
+            <h2>{(channelData && channelData.title) || 'Loading channel...'}</h2>
             <h4>{channelData && channelData.description}</h4>
             <h5>DJ: {channelData && channelData.dj}</h5>
-            <h4>Now Playing: {channelData && channelData.lastPlaying}</h4>
+            {/* <h4>Now Playing: {channelData && channelData.lastPlaying}</h4> */}
+            <h4>Now Playing: {currentSong}</h4>
 
             <div className={styles.buttons}>
               <button className={styles.button} onClick={this.handlePlayPause}>
-                <i className={ !this.props.player.playing ? 'fa fa-play' : 'fa fa-pause' } />&nbsp;
+                <i className={ !this.props.player.playing ? 'fa fa-play' : 'fa fa-pause'} />&nbsp;
                 { !this.props.player.playing ? 'Play' : 'Pause' }
               </button>
               <button className={styles.button} onClick={this.handleSaveChannel}>
-                <i className={ this.state.channelSaved ? "fa fa-star" : "fa fa-star-o" } />&nbsp;
+                <i className={ this.state.channelSaved ? 'fa fa-star' : 'fa fa-star-o'} />&nbsp;
                 { !this.state.channelSaved ? 'Favorite' : 'Remove' }
               </button>
             </div>
