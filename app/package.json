@@ -1,7 +1,7 @@
 {
   "name": "somafm",
   "productName": "somafm",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A SomaFM Desktop Player",
   "main": "./main.prod.js",
   "author": {
