@@ -22,13 +22,6 @@ describe('main window', function spec() {
     }
   });
 
-  // const findCounter = () => this.app.client.element('[data-tid="counter"]');
-
-  // const findButtons = async () => {
-  //   const { value } = await this.app.client.elements('[data-tclass="btn"]');
-  //   return value.map(btn => btn.ELEMENT);
-  // };
-
   it('should open window', async () => {
     const { client, browserWindow } = this.app;
 
@@ -50,64 +43,29 @@ describe('main window', function spec() {
     expect(logs).toHaveLength(0);
   });
 
-  // it('should to Counter with click "to Counter" link', async () => {
-  //   const { client } = this.app;
+  it('should load channel cards', async () => {
+    const { client } = this.app;
 
-  //   await client.click('[data-tid=container] > a');
-  //   expect(await findCounter().getText()).toBe('0');
-  // });
+    // const findChannels = () => client.elements('.channelCard');
+    const findChannels = async () => {
+      const { value } = await client.elements('.channelCard');
+      return value.map(el => el.ELEMENT);
+    };
+    expect(await findChannels()).not.toHaveLength(0);
+  });
 
-  // it('should display updated count after increment button click', async () => {
-  //   const { client } = this.app;
+  it('should load channel view when clicking a channel card', async () => {
+    const { client } = this.app;
+    const findChannel = () => this.app.client.element('[data-tid="channel"] h2');
 
-  //   const buttons = await findButtons();
-  //   await client.elementIdClick(buttons[0]);  // +
-  //   expect(await findCounter().getText()).toBe('1');
-  // });
+    await client.click('.channelCard > a');
+    expect(await findChannel().getText()).toBe('Seven Inch Soul');
+  });
 
-  // it('should display updated count after descrement button click', async () => {
-  //   const { client } = this.app;
+  it('should back to home if back button clicked', async () => {
+    const { client } = this.app;
+    await client.element('[data-tid="logo"]').click();
 
-  //   const buttons = await findButtons();
-  //   await client.elementIdClick(buttons[1]);  // -
-  //   expect(await findCounter().getText()).toBe('0');
-  // });
-
-  // it('shouldnt change if even and if odd button clicked', async () => {
-  //   const { client } = this.app;
-
-  //   const buttons = await findButtons();
-  //   await client.elementIdClick(buttons[2]);  // odd
-  //   expect(await findCounter().getText()).toBe('0');
-  // });
-
-  // it('should change if odd and if odd button clicked', async () => {
-  //   const { client } = this.app;
-
-  //   const buttons = await findButtons();
-  //   await client.elementIdClick(buttons[0]);  // +
-  //   await client.elementIdClick(buttons[2]);  // odd
-  //   expect(await findCounter().getText()).toBe('2');
-  // });
-
-  // it('should change if async button clicked and a second later', async () => {
-  //   const { client } = this.app;
-
-  //   const buttons = await findButtons();
-  //   await client.elementIdClick(buttons[3]);  // async
-  //   expect(await findCounter().getText()).toBe('2');
-  //   await delay(1500);
-  //   expect(await findCounter().getText()).toBe('3');
-  // });
-
-  // it('should back to home if back button clicked', async () => {
-  //   const { client } = this.app;
-  //   await client.element(
-  //     '[data-tid="backButton"] > a'
-  //   ).click();
-
-  //   expect(
-  //     await client.isExisting('[data-tid="container"]')
-  //   ).toBe(true);
-  // });
+    expect(await client.isExisting('[data-tid="home"]')).toBe(true);
+  });
 });

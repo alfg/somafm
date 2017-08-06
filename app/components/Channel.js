@@ -150,7 +150,7 @@ export default class Channel extends Component {
     ));
 
     return (
-      <div className={styles.channel}>
+      <div className={styles.channel} data-tid="channel">
         <SideNav favorites={this.props.channels.favorites} />
         <div className={styles.container}>
           <Nav />

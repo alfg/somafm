@@ -47,7 +47,7 @@ export default class Home extends Component {
     );
 
     return (
-      <div className={styles.home}>
+      <div className={styles.home} data-tid="home">
         <SideNav favorites={this.props.channels.favorites} />
         <div className={styles.container}>
           <Nav />

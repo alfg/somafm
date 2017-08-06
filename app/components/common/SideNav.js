@@ -47,7 +47,7 @@ export default class SideNav extends Component {
 
     return (
       <div className={styles.sideNav}>
-        <Link to="/" className={styles.logo} />
+        <Link to="/" className={styles.logo} data-tid="logo" />
 
         <ul className={styles.navLinks}>
           <li className={styles.title}>Main</li>
