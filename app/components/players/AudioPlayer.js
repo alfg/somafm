@@ -183,11 +183,15 @@ export default class AudioPlayer extends Component {
         </div>
         <div className={styles.controlsContainer}>
           <div className={styles.controls}>
-            {/* <button className={styles.back} onClick={this.playPrev}><i className="fa fa-step-backward"></i></button> */}
+            {/* <button className={styles.back} onClick={this.playPrev}>
+              <i className="fa fa-step-backward"></i>
+            </button> */}
             <button className={styles.play} onClick={this.playPause}>
               <i className={this.state.playing ? 'fa fa-pause-circle-o' : 'fa fa-play-circle-o'} />
             </button>
-            {/* <button className={styles.forward} onClick={this.playNext}><i className="fa fa-step-forward"></i></button> */}
+            {/* <button className={styles.forward} onClick={this.playNext}>
+              <i className="fa fa-step-forward"></i>
+            </button> */}
           </div>
         </div>
 

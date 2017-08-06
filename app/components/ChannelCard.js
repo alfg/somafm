@@ -5,17 +5,17 @@ import styles from './ChannelCard.module.css';
 
 export default class ChannelCard extends Component {
   static propTypes = {
-    img: PropTypes.string,
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    url: PropTypes.string,
+    img: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
   };
 
   render() {
     const { title, subtitle, img, url } = this.props;
 
     return (
-      <div className={styles.channelCard}>
+      <div className={`channelCard ${styles.channelCard}`}>
         <Link to={{ pathname: `/channel/${url}` }}>
           <img className={styles.channelThumbnail__img} src={img} alt={title} />
         </Link>

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actions should setHomeChannels should create channels action 1`] = `
+Object {
+  "home": undefined,
+  "type": "CHANNELS",
+}
+`;

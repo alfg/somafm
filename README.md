@@ -5,6 +5,8 @@ http://somafm.com/
 
 Built using [Electron](http://electron.atom.io) and [Node.js](https://nodejs.org/).
 
+[![Build Status](https://travis-ci.org/alfg/somafm.svg?branch=master)](https://travis-ci.org/alfg/somafm)
+
 ![somafm](screenshot-1.png)
 ![somafm](screenshot-2.png)
 

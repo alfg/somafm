@@ -1,4 +1,4 @@
-import { TRACK_URL, PLAYLIST, METADATA } from '../actions/player';
+import { TRACK_URL, METADATA } from '../actions/player';
 
 // export type playerStateType = {
 //   +counter: number

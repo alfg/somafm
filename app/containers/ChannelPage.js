@@ -1,3 +1,4 @@
+// @flow
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Channel from '../components/Channel';
@@ -11,7 +12,7 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
+function mapDispatchToProps(dispatch) {
   return bindActionCreators({ ...ChannelActions, ...PlayerActions }, dispatch);
 }
 

@@ -8,10 +8,12 @@ import SomaFMService from '../services/SomaFMService';
 export default class Home extends Component {
 
   static propTypes = {
-    setHomeChannels: PropTypes.func,
+    setHomeChannels: PropTypes.func.isRequired,
+    setFavorites: PropTypes.func.isRequired,
     channels: PropTypes.shape({
-      home: PropTypes.arrayOf(PropTypes.shape({}))
-    })
+      home: PropTypes.arrayOf(PropTypes.shape({})),
+      favorites: PropTypes.arrayOf(PropTypes.shape({}))
+    }).isRequired
   };
 
   componentDidMount() {
@@ -27,32 +29,32 @@ export default class Home extends Component {
   }
 
   loadFavorites() {
-    const soma = new SomaFMService();
-    soma.loadSavedChannels((data) => {
+    SomaFMService.loadSavedChannels((data) => {
       this.props.setFavorites(data);
     });
   }
 
   render() {
-    const channelNodes = this.props.channels.home.map((v, i) =>
-      <ChannelCard
-        key={i}
-        img={v.largeimage || "http://placehold.it/400x300"}
+    const channels = this.props.channels.home || [];
+    const channelNodes = channels.map((v) =>
+      (<ChannelCard
+        key={v.id}
+        img={v.largeimage || 'http://placehold.it/400x300'}
         title={v.title}
         subtitle={v.description}
         url={v.id}
-      />
+      />)
     );
 
     return (
-      <div className={styles.home}>
-        <SideNav
-          favorites={this.props.channels.favorites}
-         />
+      <div className={styles.home} data-tid="home">
+        <SideNav favorites={this.props.channels.favorites} />
         <div className={styles.container}>
           <Nav />
-          <h2>Channels</h2>
-          {channelNodes.length !== 0 ? channelNodes : 'No channels available.' }
+          <div className="channels">
+            <h2>Channels</h2>
+            {channels.length !== 0 ? channelNodes : 'No channels available.' }
+          </div>
         </div>
       </div>
     );
