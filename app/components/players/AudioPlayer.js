@@ -143,7 +143,7 @@ export default class AudioPlayer extends Component {
   }
 
   loadVolume(callback) {
-    this.storage.getItem('volume', (val) => {
+    this.storage.getItem('volume', (err, val) => {
       callback(val);
     });
   }

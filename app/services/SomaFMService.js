@@ -73,7 +73,7 @@ export default class SomaFMService {
   }
 
   static removeChannel(id, cb) {
-    storage.getItem('channels', (channels) => {
+    storage.getItem('channels', (err, channels) => {
       const newChannels = _.reject(channels, { id });
       storage.setItem('channels', newChannels, (val) => {
         cb(val);
@@ -82,6 +82,6 @@ export default class SomaFMService {
   }
 
   static channelExists(id, cb) {
-    storage.getItem('channels', (channels) => cb(_.some(channels, { id })));
+    storage.getItem('channels', (err, channels) => cb(_.some(channels, { id })));
   }
 }
