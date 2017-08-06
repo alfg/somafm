@@ -4,12 +4,14 @@ exports[`Home component should match exact snapshot 1`] = `
 <div>
   <div
     className="home"
+    data-tid="home"
   >
     <div
       className="sideNav"
     >
       <a
         className="logo"
+        data-tid="logo"
         href="/"
         onClick={[Function]}
       />
