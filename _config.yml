@@ -1,1 +1,5 @@
 theme: jekyll-theme-cayman
+title: Soma FM
+description: A SomaFM Desktop Player
+show_downloads: true
+google_analytics: UA-104167328-1
