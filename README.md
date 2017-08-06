@@ -36,6 +36,7 @@ brew cask install somafm
 
 Or upgrade to latest:
 ```
+brew update
 brew cask install somafm --force
 ```
 
