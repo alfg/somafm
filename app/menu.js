@@ -47,11 +47,11 @@ export default class MenuBuilder {
     const subMenuAbout = {
       label: 'Electron',
       submenu: [
-        { label: 'About ElectronReact', selector: 'orderFrontStandardAboutPanel:' },
+        { label: 'About SomaFM', selector: 'orderFrontStandardAboutPanel:' },
         { type: 'separator' },
         { label: 'Services', submenu: [] },
         { type: 'separator' },
-        { label: 'Hide ElectronReact', accelerator: 'Command+H', selector: 'hide:' },
+        { label: 'Hide SomaFM', accelerator: 'Command+H', selector: 'hide:' },
         { label: 'Hide Others', accelerator: 'Command+Shift+H', selector: 'hideOtherApplications:' },
         { label: 'Show All', selector: 'unhideAllApplications:' },
         { type: 'separator' },
@@ -96,10 +96,10 @@ export default class MenuBuilder {
     const subMenuHelp = {
       label: 'Help',
       submenu: [
-        { label: 'Learn More', click() { shell.openExternal('http://electron.atom.io'); } },
-        { label: 'Documentation', click() { shell.openExternal('https://github.com/atom/electron/tree/master/docs#readme'); } },
-        { label: 'Community Discussions', click() { shell.openExternal('https://discuss.atom.io/c/electron'); } },
-        { label: 'Search Issues', click() { shell.openExternal('https://github.com/atom/electron/issues'); } }
+        { label: 'Home', click() { shell.openExternal('https://alfg.github.io/somafm'); } },
+        { label: 'GitHub', click() { shell.openExternal('https://github.com/alfg/somafm'); } },
+        { label: 'Issues', click() { shell.openExternal('https://github.com/alfg/somafm/issues'); } },
+        { label: 'Releases', click() { shell.openExternal('https://github.com/alfg/somafm/releases'); } },
       ]
     };
 
@@ -159,24 +159,24 @@ export default class MenuBuilder {
     }, {
       label: 'Help',
       submenu: [{
-        label: 'Learn More',
+        label: 'Home',
         click() {
-          shell.openExternal('http://electron.atom.io');
+          shell.openExternal('https://alfg.github.io/somafm');
         }
       }, {
-        label: 'Documentation',
+        label: 'GitHub',
         click() {
-          shell.openExternal('https://github.com/atom/electron/tree/master/docs#readme');
+          shell.openExternal('https://github.com/alfg/somafm');
         }
       }, {
-        label: 'Community Discussions',
+        label: 'Issues',
         click() {
-          shell.openExternal('https://discuss.atom.io/c/electron');
+          shell.openExternal('https://github.com/alfg/somafm/issues');
         }
       }, {
-        label: 'Search Issues',
+        label: 'Releases',
         click() {
-          shell.openExternal('https://github.com/atom/electron/issues');
+          shell.openExternal('https://github.com/alfg/somafm/releases');
         }
       }]
     }];
