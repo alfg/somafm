@@ -9,13 +9,13 @@ function CheckBuildsExist() {
   const rendererPath = path.join(__dirname, '..', '..', 'app', 'dist', 'renderer.prod.js');
 
   if (!fs.existsSync(mainPath)) {
-    throw new Error(chalk.whiteBright.bgRed.bold(
+    throw new Error(chalk.white.bgRed.bold(
       'The main process is not built yet. Build it by running "npm run build-main"'
     ));
   }
 
   if (!fs.existsSync(rendererPath)) {
-    throw new Error(chalk.whiteBright.bgRed.bold(
+    throw new Error(chalk.white.bgRed.bold(
       'The renderer process is not built yet. Build it by running "npm run build-renderer"'
     ));
   }
